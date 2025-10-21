@@ -2,136 +2,120 @@
 
     private String codigo;
     private String descripcion;
-    private int cantidad; 
+    private int cantidad;
     private double precioUnitario;
 
-
     public Producto() {
-        this.codigo = "N/C";
+        this.codigo = "Sin codigo";
         this.descripcion = "Sin descripcion";
         this.cantidad = 1;
         this.precioUnitario = 0.0;
     }
 
-    
     public Producto(String codigo, String descripcion, int cantidad, double precioUnitario) {
-        if (codigo == null || codigo.trim().isEmpty()) {
-            System.out.println("Código inválido. Se asigna 'N/C'.");
-            this.codigo = "N/C";
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        
+        if (cantidad >= 1) {
+            this.cantidad = cantidad;
         } else {
-            this.codigo = codigo.trim();
-        }
-
-        if (descripcion == null || descripcion.trim().isEmpty()) {
-            this.descripcion = "Sin descripcion";
-        } else {
-            this.descripcion = descripcion.trim();
-        }
-
-        if (cantidad < 1) {
-            System.out.println("Cantidad inválida. Se asigna 1.");
             this.cantidad = 1;
+        }
+        
+        if (precioUnitario >= 0) {
+            this.precioUnitario = precioUnitario;
         } else {
+            this.precioUnitario = 0.0;
+        }
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        if (cantidad >= 1) {
             this.cantidad = cantidad;
         }
+    }
 
-        if (precioUnitario < 0) {
-            System.out.println("Precio inválido. Se asigna 0.0.");
-            this.precioUnitario = 0.0;
-        } else {
+    public double getPrecioUnitario() {
+        return precioUnitario;
+    }
+
+    public void setPrecioUnitario(double precioUnitario) {
+        if (precioUnitario >= 0) {
             this.precioUnitario = precioUnitario;
         }
-        }
-    
-    public String getCodigo() { return codigo; }
-    public void setCodigo(String codigo) {
-        if (codigo == null || codigo.trim().isEmpty()) {
-            System.out.println("Código inválido.");
-            return;
-        }
-        this.codigo = codigo.trim();
     }
 
-    public String getDescripcion() { return descripcion; }
-    public void setDescripcion(String descripcion) {
-        if (descripcion == null || descripcion.trim().isEmpty()) {
-            System.out.println("Descripción inválida.");
-            return;
-        }
-        this.descripcion = descripcion.trim();
-    }
-
-    public int getCantidad() { return cantidad; }
-    public void setCantidad(int cantidad) {
-        if (cantidad < 1) {
-            System.out.println("La cantidad debe ser al menos 1.");
-            return;
-        }
-        this.cantidad = cantidad;
-    }
-
-    public double getPrecioUnitario() { return precioUnitario; }
-    public void setPrecioUnitario(double precioUnitario) {
-        if (precioUnitario < 0) {
-            System.out.println("Precio unitario inválido.");
-            return;
-        }
-        this.precioUnitario = precioUnitario;
-    }
-
-    
     public double calcularSubtotal() {
-        return this.cantidad * this.precioUnitario;
+        return cantidad * precioUnitario;
     }
 
-    
-    public boolean aplicarDescuento(double porcentaje) {
-        if (porcentaje < 0 || porcentaje > 50) {
-            System.out.println("Porcentaje inválido. Debe estar entre 0 y 50.");
-            return false;
+    public void aplicarDescuento(double porcentaje) {
+        if (porcentaje > 0 && porcentaje <= 50) {
+            double descuento = precioUnitario * (porcentaje / 100);
+            precioUnitario = precioUnitario - descuento;
+            System.out.println("Descuento aplicado: " + porcentaje + "%");
+        } else {
+            System.out.println("El descuento debe estar entre 1% y 50%");
         }
-        double descuento = (porcentaje / 100.0) * this.calcularSubtotal();
-        double subtotal = this.calcularSubtotal();
-        double nuevoTotal = subtotal - descuento;
-        if (this.cantidad > 0) {
-            this.precioUnitario = nuevoTotal / this.cantidad;
-        }
-        return true;
     }
 
-    
-    public boolean incrementarCantidad(int valor) {
-        if (valor <= 0) {
-            System.out.println("El valor a incrementar debe ser mayor que 0.");
-            return false;
+    public void incrementarCantidad(int valor) {
+        if (valor > 0) {
+            cantidad = cantidad + valor;
+            System.out.println("Cantidad incrementada en: " + valor);
+        } else {
+            System.out.println("El valor debe ser mayor a 0");
         }
-        this.cantidad += valor;
-        return true;
     }
 
-    
-    public double calcularTotalConImpuesto(double porcentajeDescuento) {
-        double subtotal = this.calcularSubtotal();
-        double descuento = 0.0;
-
-        if (porcentajeDescuento >= 0 && porcentajeDescuento <= 50) {
-            descuento = (porcentajeDescuento / 100.0) * subtotal;
-        }
-
-        double totalConDescuento = subtotal - descuento;
-        double impuesto = totalConDescuento * 0.08; 
-        return totalConDescuento + impuesto;
-    }
-
-    @Override
     public String toString() {
-        return "Producto{" +
-                "codigo='" + codigo + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", cantidad=" + cantidad +
-                ", precioUnitario=" + precioUnitario +
-                '}';
+        return "Producto - Codigo: " + codigo + 
+               ", Descripcion: " + descripcion + 
+               ", Cantidad: " + cantidad + 
+               ", Precio: $" + precioUnitario +
+               ", Subtotal: $" + calcularSubtotal();
+    }
+
+    public static void main(String[] args) {
+        System.out.println("=== PROBANDO CLASE PRODUCTO ===");
+        
+        Producto producto1 = new Producto();
+        System.out.println("Producto 1: " + producto1.toString());
+        
+        Producto producto2 = new Producto("P001", "Lapiz", 5, 2.5);
+        System.out.println("Producto 2: " + producto2.toString());
+        
+        System.out.println("Subtotal: $" + producto2.calcularSubtotal());
+        
+        producto2.aplicarDescuento(10);  
+        System.out.println("Después del descuento: " + producto2.toString());
+        
+        producto2.incrementarCantidad(3);
+        System.out.println("Después de incrementar: " + producto2.toString());
+        
+        producto2.aplicarDescuento(60);  
+        producto2.aplicarDescuento(-5);  
+        
+        producto2.incrementarCantidad(-2);
     }
 }
-
-
