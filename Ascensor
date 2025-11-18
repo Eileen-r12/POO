@@ -1,0 +1,21 @@
+
+El problema consiste en modelar un sistema de ascensor en codigo:
+
+- Un boton en cada piso para llamar al ascensor  
+- Un boton interno para seleccionar pisos destino
+- Un sistema de control que coordine todo
+- Puertas que se abran y cierren automáticamente
+- Sistema de iluminación para los botones
+
+Como lo pense:
+1. Identifiqué las entidades principales (Ascensor, Botones, Puertas, Control)
+2. Luego definí las relaciones entre ellas (el Control coordina todo)
+3. Diseñé cada clase con sus atributos y métodos esenciales
+4. Creé una simulación interactiva para probar el sistema
+
+Clases:
+- Ascensor: Representa el ascensor con su estado y movimientos
+- BotonAfuera: Botones en los pasillos para llamar al ascensor
+- BotonAscensor: Botones internos para seleccionar destino  
+- ControlAscensor: El que coordina todas las operaciones
+- Puerta: Controla la apertura y cierre de puerta
