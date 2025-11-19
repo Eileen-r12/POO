@@ -1,24 +1,24 @@
 public class Puerta {
-    private boolean abierta;
+    protected boolean Abierta;
     
 
     public Puerta(boolean abierta) {
-        this.abierta = abierta;
+        this.Abierta = abierta;
         
         
     }
 
+    public Puerta() {
+    
+    }
+
     public void abrir() {
-    this.abierta = true;
+    this.Abierta = true;
     }
     public void cerrar() {
-    this.abierta = false;
-}
-    public boolean estaAbierta() {
-    return this.abierta;
-}
- 
+    this.Abierta = false;
 }
     
+}
     
 
