@@ -12,8 +12,7 @@ public class Ejecutar {
         
         System.out.print("\n¿Desde qué piso llamas al ascensor? ");
         int pisoLlamada = scanner.nextInt();
-        
-        BotonAfuera botonLlamada = new BotonAfuera(false, "subir", pisoLlamada);
+        BotonAfuera botonLlamada = new BotonAfuera(false, pisoLlamada, false, null, false);
         
         System.out.println("\nLlamando al ascensor al piso " + pisoLlamada + "...");
         
@@ -38,27 +37,22 @@ public class Ejecutar {
         System.out.println("Botón de llamada en piso " + pisoLlamada + " se apaga");
         
         System.out.println("Abriendo puertas...");
-        Puerta puerta = new Puerta(false);
-        puerta.abrir();
+        PuertaPiso puertaPiso = new PuertaPiso(pisoLlamada);
+        puertaPiso.abrir();
         ascensor.abrirPuertas();
-        
 
         System.out.print("\n¿A qué piso deseas ir? ");
         int pisoDestino = scanner.nextInt();
-        
     
-        BotonAscensor botonDestino = new BotonAscensor(false, "numero", pisoDestino);
-        
-        botonDestino.iluminar();
-        System.out.println("Botón" + pisoDestino + " se enciende");
+        BotonAscensor botonDestino = new BotonAscensor("Ascensor", pisoDestino);
+    
+        System.out.println("Botón " + pisoDestino + " se enciende");
         
         control.procesarSolicitud(pisoDestino, "adentro");
         
         System.out.println("Cerrando puertas...");
-        Puerta puerta2 = new Puerta(false);
-        puerta2.cerrar();
+        puertaPiso.cerrar();
         ascensor.cerrarPuertas();
-        
 
         System.out.println("\nDirigiéndose al piso " + pisoDestino + "...");
         if (pisoDestino > pisoLlamada) {
@@ -69,18 +63,13 @@ public class Ejecutar {
             ascensor.bajar();
         }
         
-    
         System.out.println("El ascensor llegó al piso " + pisoDestino);
         ascensor.detenerse();
-        
-        
-        botonDestino.apagar();
-        System.out.println("Botón" + pisoDestino + " se apaga");
-        
+        System.out.println("Botón " + pisoDestino + " se apaga");
         
         System.out.println("Abriendo puertas");
-        Puerta puerta3 = new Puerta(false);
-        puerta3.abrir();
+        PuertaAscensor puertaAscensor = new PuertaAscensor(pisoDestino);
+        puertaAscensor.abrir();
         ascensor.abrirPuertas();
         
         System.out.println("\n¡Has llegado!");
