@@ -1,33 +1,28 @@
-public class BotonAfuera {
-    private boolean iluminado;
-    private String direccion;
-    private int numeroPiso;
+public class BotonAfuera extends Boton{
+        private boolean direccion;
+        private int pisoLlamada;
+        private boolean iluminado;
+        private boolean subir;
 
+        public BotonAfuera(boolean direccion, int pisoLlamada, boolean iluminado, String tipo, boolean subir) {
+            super(iluminado,tipo, pisoLlamada);
+            this.direccion = direccion;
+            this.subir = true;
+            this.pisoLlamada = pisoLlamada;
+        }
+        
 
-    public BotonAfuera(boolean iluminado, String direccion, int numeroPiso) {
-        this.iluminado = iluminado;
-        this.direccion = direccion;
-        this.numeroPiso = numeroPiso;
+        @Override
+        public void iluminar() {
+            iluminado = true;
+            System.out.println("Botón de llamada presionado en piso " + pisoLlamada);
+        }
+        @Override
+        public void apagar() {
+            iluminado = false;
+            System.out.println("Botón de llamada apagado en piso " + pisoLlamada);
+        }
+        
     }
 
-    public void iluminar() {
-        this.iluminado = true;
-    }
-    
-    public void apagar() {
-        this.iluminado = false;
-    }
-    
-    public boolean estaIluminado() {
-        return this.iluminado;
-    }
-
-     public String getDireccion() {
-        return this.direccion;
-    }
-    
-    public int getNumeroPiso() {
-        return this.numeroPiso;
-    }
-}
 
