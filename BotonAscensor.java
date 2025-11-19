@@ -1,33 +1,32 @@
-public class BotonAscensor {
-    private boolean iluminado;
-    private String tipo;
-    private int numeroPiso;
 
-    public BotonAscensor(boolean iluminado, String tipo, int numeroPiso) {
-    this.iluminado = iluminado;
-    this.tipo = tipo;
-    this.numeroPiso = numeroPiso;
-}
+public class BotonAscensor extends Boton {
+        private int pisoDestino;
+        
 
-    public void iluminar() {
-        this.iluminado = true;
+    public BotonAscensor(String tipo, int pisoDestino) {
+    super(false, pisoDestino, tipo);
+        this.pisoDestino = pisoDestino;
 
     }
 
-    public void apagar() {
-        this.iluminado = false;
-    }
     
-    public boolean estaIluminado() {
-    return this.iluminado; 
-}
+    public int getPiso() {
+        return pisoDestino;
+    }
 
-    public String getTipo() {
-    return this.tipo;
-}
-    public int getNumeroPiso() {
-    return this.numeroPiso;
-}
+    public boolean estaEncendido() {
+        return estailuminado();
+    }
 
-  
-}
+         
+    @Override 
+    public void iluminar() {
+    iluminado = true;
+    System.out.println("Botón de piso " + pisoDestino + " iluminado.");
+    }
+    @Override
+    public void apagar() {
+        super.apagar();
+    System.out.println("Botón de piso " + pisoDestino + " apagado.");
+            }
+    }
