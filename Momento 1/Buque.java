@@ -1,4 +1,4 @@
-public class Buque {
+/*public class Buque {
     private String nombre;
     private String origen;
     private int id;
@@ -57,3 +57,4 @@ public void setOrigen(String origen) {
 
     
 }
+ /* */

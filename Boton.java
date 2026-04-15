@@ -1,3 +1,4 @@
+/*
 public class Boton {
     protected boolean iluminado;
     protected String tipo;
@@ -23,3 +24,4 @@ public class Boton {
 
     
 }
+/* */

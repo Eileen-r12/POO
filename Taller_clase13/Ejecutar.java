@@ -1,3 +1,4 @@
+/*
 package Taller_clase13;
 
 import java.util.Date;
@@ -30,3 +31,4 @@ public class Ejecutar {
         foto2.print();
     }
 }
+/* */

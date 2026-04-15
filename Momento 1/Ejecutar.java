@@ -1,3 +1,4 @@
+/*
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +11,7 @@ public class Ejecutar {
     private static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        // al iniciar generamos algunos contenedores aleatorios
+        
         generarContenedoresAleatorios(10);
 
         int opcion;
@@ -31,7 +32,7 @@ public class Ejecutar {
                     listarPorOrigen();
                     break;
                 case 5:
-                    System.out.println("Cerrando aplicación. ¡Hasta luego!");
+                    System.out.println("Cerrando aplicación");
                     break;
                 default:
                     System.out.println("Opción inválida, intente de nuevo.");
@@ -40,15 +41,14 @@ public class Ejecutar {
     }
 
     private static void mostrarMenuPrincipal() {
-        System.out.println("\n=================================");
-        System.out.println("        MENÚ PRINCIPAL");
-        System.out.println("=================================");
+       
+        System.out.println("Menú");
         System.out.println("1. Registro de buques");
         System.out.println("2. Registro de contenedores");
         System.out.println("3. Mostrar peso total de los contenedores");
         System.out.println("4. Listar por origen de los contenedores");
         System.out.println("5. Cerrar aplicación");
-        System.out.println("=================================");
+        
     }
 
     private static void menuRegistroBuques() {
@@ -89,18 +89,10 @@ public class Ejecutar {
         for (Contenedor c : contenedores) {
             agrupado.computeIfAbsent(c.getPais_origen(), k -> new ArrayList<>()).add(c);
         }
-        System.out.println("\nContenedores agrupados por origen:");
-        for (String origen : agrupado.keySet()) {
-            System.out.println("\n== Origen: " + origen + " ==");
-            System.out.printf("%-6s | %-10s | %-6s\n", "ID", "Origen", "Peso");
-            System.out.println("---------------------------");
-            for (Contenedor c : agrupado.get(origen)) {
-                System.out.printf("%-6d | %-10s | %-4dkg\n", c.getId(), c.getPais_origen(), c.getPeso());
-            }
+       
         }
-    }
 
-    // Métodos sirven para  leer los datos de entrada
+
     private static int leerEntero(String mensaje) {
         System.out.print(mensaje);
         while (!sc.hasNextInt()) {
@@ -108,21 +100,18 @@ public class Ejecutar {
             sc.next();
         }
         int valor = sc.nextInt();
-        sc.nextLine(); // limpiar buffer
+        sc.nextLine(); 
         return valor;
     }
 
-    /**
-     * Genera contenedores con datos aleatorios y los agrega a la lista.
-     * @param cantidad número de objetos a crear
-     */
+     
     private static void generarContenedoresAleatorios(int cantidad) {
-        String[] paises = {"China", "EEUU", "Brasil", "India", "Alemania", "Colombia", "Canadá"};
+        String[] paises = {"China", "Eslovaquia", "Brasil", "India", "Alemania", "Colombia", "Canadá"};
         java.util.Random rand = new java.util.Random();
         for (int i = 0; i < cantidad; i++) {
             int id = contenedores.size() + 1;
             String origen = paises[rand.nextInt(paises.length)];
-            int peso = 100 + rand.nextInt(900); // entre 100 y 999 kg
+            int peso = 100 + rand.nextInt(900); 
             Contenedor c = new Contenedor(id, origen, peso);
             contenedores.add(c);
         }
@@ -134,3 +123,4 @@ public class Ejecutar {
         return sc.nextLine();
     }
 }
+    /*  */

@@ -1,3 +1,4 @@
+/*
 public class PuertaAscensor extends Puerta {
     private int pisoActual;
     public PuertaAscensor (int pisoActual) {
@@ -16,3 +17,4 @@ public class PuertaAscensor extends Puerta {
         System.out.println("Cerrando puertas del ascensor en piso "+ pisoActual);
     }
 }
+    /* */

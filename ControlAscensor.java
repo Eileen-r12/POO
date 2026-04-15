@@ -1,4 +1,6 @@
+/* 
 public class ControlAscensor {
+
     private String listaPisos;
     private Ascensor ascensor;
     private String listaBotones;
@@ -38,6 +40,6 @@ public class ControlAscensor {
     }
 }
        
-    
+    //*  */
    
 

@@ -1,4 +1,4 @@
-public class PuertaPiso extends Puerta {
+/*public class PuertaPiso extends Puerta {
     private int piso;
     public PuertaPiso (int piso){
         super();
@@ -17,4 +17,4 @@ public class PuertaPiso extends Puerta {
     System.out.println("Cerrando puertas del piso "+ piso);
   }
 
-}
+}/* */

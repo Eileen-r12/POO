@@ -1,3 +1,4 @@
+/*
 public class Puerta {
     protected boolean Abierta;
     
@@ -22,3 +23,4 @@ public class Puerta {
 }
     
 
+/* */

@@ -1,3 +1,4 @@
+/*
 public class BotonAfuera extends Boton{
         private boolean direccion;
         private int pisoLlamada;
@@ -25,4 +26,4 @@ public class BotonAfuera extends Boton{
         
     }
 
-
+/* */

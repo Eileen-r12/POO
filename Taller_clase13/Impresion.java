@@ -1,3 +1,4 @@
+/*
 package Taller_clase13;
 
 public class Impresion {
@@ -26,3 +27,4 @@ public class Impresion {
     }
     
 }
+    /* */
